@@ -1,0 +1,3 @@
+/home/shang/code/C++/github-project/student-work-project/sql-connect-pool/my_sql_pool/build/CMakeFiles/rebuild_cache.dir
+/home/shang/code/C++/github-project/student-work-project/sql-connect-pool/my_sql_pool/build/CMakeFiles/main.dir
+/home/shang/code/C++/github-project/student-work-project/sql-connect-pool/my_sql_pool/build/CMakeFiles/edit_cache.dir
