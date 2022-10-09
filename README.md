@@ -637,7 +637,35 @@ void op2(ConnectionPool* pool, int begin, int end)
 }
 ```
 
-单线程下调用<br />多线程下调用
+单线程下调用<br />
+```cpp
+// 单线程
+void test1()
+{
+#if 0
+    // 非连接池, 单线程, 用时: 34127689958 纳秒, 34127 毫秒
+    steady_clock::time_point begin = steady_clock::now();
+    op1(0, 5000);
+    steady_clock::time_point end = steady_clock::now();
+    auto length = end - begin;
+    cout << "非连接池, 单线程, 用时: " << length.count() << " 纳秒, "
+        << length.count() / 1000000 << " 毫秒" << endl;
+#else
+    // 连接池, 单线程, 用时: 19413483633 纳秒, 19413 毫秒
+    ConnectionPool* pool = ConnectionPool::getConnectionPool();
+    steady_clock::time_point begin = steady_clock::now();
+    op2(pool, 0, 5000);
+    steady_clock::time_point end = steady_clock::now();
+    auto length = end - begin;
+    cout << "连接池, 单线程, 用时: " << length.count() << " 纳秒, "
+        << length.count() / 1000000 << " 毫秒" << endl;
+
+#endif
+}
+```
+
+
+多线程下调用
 
 ```cpp
 // 多线程
